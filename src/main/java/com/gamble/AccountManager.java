@@ -7,16 +7,19 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class AccountManager {
 
     public static void main(String[] args) throws IOException, InterruptedException {
         String path = "/Users/lingda/Downloads/bjracingcar";
-        String expireYear = "2017";
-        String expireMonth = "10";
-        String expireDay = "6";
+        Integer expireYear = 2017;
+        Integer expireMonth = 11;
+        Integer expireDay = 5;
         String bossEmail = "fwj0331@yahoo.com";
 
         Map<String, String> accountMap = new HashMap<>();
@@ -24,28 +27,30 @@ public class AccountManager {
 //        accountMap.put("dd9902", "135-6810");
 //        accountMap.put("dd9903", "147-258");
 //        accountMap.put("dd9905", "147-369");
-//        accountMap.put("dd9906", "258-369");
-//        accountMap.put("dd8801", "basic");
-        accountMap.put("dd1002", "135-6810");
-//        accountMap.put("dd1003", "258-369");
-//        accountMap.put("dd1005", "147-258");
-//        accountMap.put("dd1006", "147-369");
+        accountMap.put("dd1002", ModeEnum.BASIC.getMode());
+        accountMap.put("dd1003", ModeEnum.MODE_246_579.getMode());
+//        accountMap.put("dd1005", "basic");
+//        accountMap.put("dd1006", "basic");
 //        accountMap.put("dd1007", "basic");
+
+        List<String> dirList = new ArrayList<>();
 
         for (Map.Entry<String, String> account : accountMap.entrySet()) {
             String accountDir = createDirectory(path, account.getKey(), account.getValue());
+            dirList.add(accountDir.substring(accountDir.lastIndexOf("/") + 1));
 //          bjracingcar
             System.out.println("[git clone https://github.com/darlingtld/BeijingRacingCar.git] in " + accountDir);
-            Process process = Runtime.getRuntime().exec("git clone https://github.com/darlingtld/BeijingRacingCar.git", null, new File(accountDir));
+            Process process = Runtime.getRuntime().exec("git clone -b cloudapex https://github.com/darlingtld/BeijingRacingCar.git", null, new File(accountDir));
             process.waitFor();
 
             System.out.println("[rewrite application.properties] ");
             Map<String, String> replaceMap = new HashMap<>();
             replaceMap.put("account", account.getKey());
-            replaceMap.put("gamble.expiration.year", expireYear);
-            replaceMap.put("gamble.expiration.month", expireMonth);
-            replaceMap.put("gamble.expiration.day", expireDay);
+            replaceMap.put("gamble.expiration.year", expireYear.toString());
+            replaceMap.put("gamble.expiration.month", expireMonth.toString());
+            replaceMap.put("gamble.expiration.day", expireDay.toString());
             replaceMap.put("gamble.notification.email", bossEmail);
+
             replaceMap.put("gamble.bet.mimic", "false");
             replaceMap.put("server.port", "26000");
             replaceMap.put("spring.data.mongodb.port", "27000");
@@ -79,7 +84,12 @@ public class AccountManager {
             System.out.println("[delete BeijingRacingCar source] in " + String.valueOf(Paths.get(accountDir, "BeijingRacingCar")));
             deleteDirectory(new File(String.valueOf(Paths.get(accountDir, "BeijingRacingCar"))));
 
+
         }
+        String zipCommand = "zip -r " + String.format("%s_%s.zip ", String.join("-", accountMap.entrySet().stream().map(Map.Entry::getKey).collect(Collectors.toList())), String.format("%04d%02d%02d", expireYear, expireMonth, expireDay) + "到期") + String.join(" ", dirList);
+        System.out.println("[create zip file] " + zipCommand);
+        Process process5 = Runtime.getRuntime().exec(zipCommand, null, new File(path));
+        process5.waitFor();
     }
 
     private static void writeStartDb(String accountDir) throws IOException {
