@@ -20,18 +20,18 @@ public class AccountManager {
         Integer expireYear = 2017;
         Integer expireMonth = 11;
         Integer expireDay = 5;
-        String bossEmail = "fwj0331@yahoo.com";
+        String bossEmail = "";
 
         Map<String, String> accountMap = new HashMap<>();
 //        accountMap.put("dear001", "master");
 //        accountMap.put("dd9902", "135-6810");
 //        accountMap.put("dd9903", "147-258");
 //        accountMap.put("dd9905", "147-369");
-        accountMap.put("dd1002", ModeEnum.BASIC.getMode());
-        accountMap.put("dd1003", ModeEnum.MODE_246_579.getMode());
-//        accountMap.put("dd1005", "basic");
-//        accountMap.put("dd1006", "basic");
-//        accountMap.put("dd1007", "basic");
+        accountMap.put("dd9901", ModeEnum.MODE_135_6810.getMode());
+        accountMap.put("dd9902", ModeEnum.MODE_246_579.getMode());
+        accountMap.put("dd9903", ModeEnum.BASIC.getMode());
+        accountMap.put("dd9905", ModeEnum.MODE_147_369.getMode());
+        accountMap.put("dd9906", ModeEnum.BASIC.getMode());
 
         List<String> dirList = new ArrayList<>();
 
