@@ -19,19 +19,23 @@ public class AccountManager {
         String path = "/Users/lingda/Downloads/bjracingcar";
         Integer expireYear = 2017;
         Integer expireMonth = 11;
-        Integer expireDay = 18;
+        Integer expireDay = 5;
+        Integer expireYearActual = expireYear;
+        Integer expireMonthActual = expireMonth;
+        Integer expireDayActual = expireDay;
         String bossEmail = "abc@ef.com";
 
-        String branch = "topspeed"; // cloudapex
-        String version = "极速";
-        String bjracingcar = "BJRacingCar";
-        String user="rita1";
+//        String branch = "cloudapex";
+        String branch = "topspeed";
 
-        Map<String, String> accountMap = new HashMap<>();
-        accountMap.put("d36986", ModeEnum.MASTER.getMode());
-        accountMap.put("d36987", ModeEnum.MASTER.getMode());
-        accountMap.put("d36998", ModeEnum.MASTER.getMode());
-        accountMap.put("d36999", ModeEnum.MASTER.getMode());
+//        String version = "云顶";
+        String version = "极速";
+
+        String bjracingcar = "BJRacingCar";
+        String user = "rita1";
+
+        Map<String, String> accountMap = new HashMap<>(16);
+        accountMap.put("ye0001", ModeEnum.MASTER.getMode());
 
         List<String> dirList = new ArrayList<>();
 
@@ -46,9 +50,9 @@ public class AccountManager {
             System.out.println("[rewrite application.properties] ");
             Map<String, String> replaceMap = new HashMap<>();
             replaceMap.put("account", account.getKey());
-            replaceMap.put("gamble.expiration.year", expireYear.toString());
-            replaceMap.put("gamble.expiration.month", expireMonth.toString());
-            replaceMap.put("gamble.expiration.day", expireDay.toString());
+            replaceMap.put("gamble.expiration.year", expireYearActual.toString());
+            replaceMap.put("gamble.expiration.month", expireMonthActual.toString());
+            replaceMap.put("gamble.expiration.day", expireDayActual.toString());
             replaceMap.put("gamble.notification.email", bossEmail);
 
             replaceMap.put("gamble.bet.mimic", "false");
