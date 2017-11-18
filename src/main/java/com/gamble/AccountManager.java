@@ -18,24 +18,26 @@ public class AccountManager {
     public static void main(String[] args) throws IOException, InterruptedException {
         String path = "/Users/lingda/Downloads/bjracingcar";
         Integer expireYear = 2017;
-        Integer expireMonth = 11;
-        Integer expireDay = 5;
+        Integer expireMonth = 12;
+        Integer expireDay = 17;
         Integer expireYearActual = expireYear;
         Integer expireMonthActual = expireMonth;
         Integer expireDayActual = expireDay;
         String bossEmail = "abc@ef.com";
 
 //        String branch = "cloudapex";
-        String branch = "topspeed";
+//        String branch = "topspeed-dumb";
+        String branch = "cantonunion";
 
 //        String version = "云顶";
-        String version = "极速";
+//        String version = "极速";
+        String version ="广东联盟";
 
         String bjracingcar = "BJRacingCar";
         String user = "rita1";
 
         Map<String, String> accountMap = new HashMap<>(16);
-        accountMap.put("ye0001", ModeEnum.MASTER.getMode());
+        accountMap.put("dss734", ModeEnum.MASTER.getMode());
 
         List<String> dirList = new ArrayList<>();
 

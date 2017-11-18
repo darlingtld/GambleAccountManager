@@ -3,11 +3,8 @@ package com.gamble;
 public enum ModeEnum {
     MASTER("master"),
     BASIC("basic"),
-    MODE_135_6810("135-6810"),
-    MODE_147_258("147-258"),
-    MODE_147_369("147-369"),
-    MODE_246_579("246-579"),
-    MODE_258_369("258-369");
+    PORT_26000("port_26000"),
+    PORT_26001("port_26001") ;
 
     private String mode;
 
