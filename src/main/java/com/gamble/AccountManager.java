@@ -16,10 +16,10 @@ import java.util.stream.Collectors;
 public class AccountManager {
 
     public static void main(String[] args) throws IOException, InterruptedException {
-        String path = "/Users/lingda/Downloads/bjracingcar";
+        String path = "/Users/lingtang/Downloads/bjracingcar";
         Integer expireYear = 2018;
-        Integer expireMonth = 2;
-        Integer expireDay = 28;
+        Integer expireMonth = 4;
+        Integer expireDay = 2;
         Integer expireYearActual = expireYear;
         Integer expireMonthActual = expireMonth;
         Integer expireDayActual = expireDay;
@@ -38,7 +38,7 @@ public class AccountManager {
         String user = "rita1";
 
         Map<String, String> accountMap = new HashMap<>(16);
-        accountMap.put("win608", ModeEnum.MASTER.getMode());
+        accountMap.put("new222", ModeEnum.MASTER.getMode());
 
 
 
@@ -66,19 +66,19 @@ public class AccountManager {
             rewriteApplicationProperties(String.valueOf(Paths.get(accountDir, bjracingcar, "src", "main", "resources", "application.properties")), replaceMap);
 
             System.out.println("[gradle build -x test] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
-            Process process1 = Runtime.getRuntime().exec("gradle build -x test", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
+            Process process1 = Runtime.getRuntime().exec("./gradlew build -x test", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
             process1.waitFor();
 
             System.out.println("[cp build/libs/BJRacingCar-0.0.1-SNAPSHOT.jar ../] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
             Process process2 = Runtime.getRuntime().exec("cp build/libs/BJRacingCar-0.0.1-SNAPSHOT.jar ../", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
             process2.waitFor();
 
-            System.out.println("[cp /Users/lingda/IdeaProjects/GambleAccountManager/src/main/resources/" + account.getValue() + "/GambleConsole.jar ../] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
-            Process process3 = Runtime.getRuntime().exec("cp /Users/lingda/IdeaProjects/GambleAccountManager/src/main/resources/" + account.getValue() + "/GambleConsole.jar ../", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
+            System.out.println("[cp /Users/lingtang/IdeaProjects/GambleAccountManager/src/main/resources/" + account.getValue() + "/GambleConsole.jar ../] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
+            Process process3 = Runtime.getRuntime().exec("cp /Users/lingtang/IdeaProjects/GambleAccountManager/src/main/resources/" + account.getValue() + "/GambleConsole.jar ../", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
             process3.waitFor();
 
-            System.out.println("[cp /Users/lingda/IdeaProjects/GambleAccountManager/src/main/resources/chromedriver.exe ../] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
-            Process process4 = Runtime.getRuntime().exec("cp /Users/lingda/IdeaProjects/GambleAccountManager/src/main/resources/chromedriver.exe ../", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
+            System.out.println("[cp /Users/lingtang/IdeaProjects/GambleAccountManager/src/main/resources/chromedriver.exe ../] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
+            Process process4 = Runtime.getRuntime().exec("cp /Users/lingtang/IdeaProjects/GambleAccountManager/src/main/resources/chromedriver.exe ../", null, new File(String.valueOf(Paths.get(accountDir, bjracingcar))));
             process4.waitFor();
 
             System.out.println("[write start_1_db] in " + String.valueOf(Paths.get(accountDir, bjracingcar)));
