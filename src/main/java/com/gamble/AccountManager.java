@@ -38,7 +38,7 @@ public class AccountManager {
         String user = "rita1";
 
         Map<String, String> accountMap = new HashMap<>(16);
-        accountMap.put("new222", ModeEnum.MASTER.getMode());
+        accountMap.put("shun0001", ModeEnum.BASIC.getMode());
 
 
 
